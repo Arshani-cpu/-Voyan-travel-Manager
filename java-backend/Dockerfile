@@ -1,19 +1,19 @@
 
 FROM maven:3.9.9-eclipse-temurin-17 AS build
 
-WORKDIR /app
+WORKDIR /build
 
-COPY pom.xml .
-COPY src ./src
+COPY java-backend/pom.xml ./pom.xml
+COPY java-backend/src ./src
 
-RUN mvn clean package -DskipTests
+RUN mvn -B -DskipTests package
 
 FROM eclipse-temurin:17-jre
 
 WORKDIR /app
 
-COPY --from=build /app/target/voyan-java-backend-0.1.0.jar app.jar
+COPY --from=build /build/target/*.jar app.jar
 
-EXPOSE 10000
+EXPOSE 8081
 
-CMD ["sh", "-c", "java -Djava.awt.headless=true -Dserver.port=${PORT:-10000} -jar app.jar"]
+ENTRYPOINT ["sh", "-c", "java -Dserver.port=${PORT:-8081} -jar app.jar"]
