@@ -1,0 +1,28 @@
+
+services:
+  - type: web
+    name: voyan-backend
+    runtime: docker
+    region: singapore
+    plan: free
+
+    dockerfilePath: ./java-backend/Dockerfile
+    dockerContext: ./java-backend
+
+    healthCheckPath: /api/places/meta/states
+
+    envVars:
+      - key: SQLITE_PATH
+        value: /tmp/voyan.sqlite
+
+      - key: VOYAN_ALLOWED_ORIGINS
+        value: "https://*.netlify.app,http://localhost:*"
+
+      - key: FIREBASE_SERVICE_ACCOUNT_JSON
+        sync: false
+
+      - key: FIREBASE_API_KEY
+        sync: false
+
+      - key: GEMINI_API_KEY
+        sync: false

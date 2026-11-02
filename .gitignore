@@ -1,0 +1,52 @@
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+coverage/
+java-backend/target/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Environment files - NEVER upload secrets
+.env
+.env.*
+!.env.example
+
+# Local databases and application data
+.sqlite-data/
+**/.sqlite-data/
+.file-data/
+*.sqlite
+*.sqlite3
+*.db
+
+# Firebase private credentials
+firebase-applet-config.json
+service-account*.json
+firebase-service-account*.json
+
+# Java generated files
+*.class
+
+# IDE files
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.bak
+# Old Git history backup
+.git-backup/
+.gmp_cache/
+dev-dist/
