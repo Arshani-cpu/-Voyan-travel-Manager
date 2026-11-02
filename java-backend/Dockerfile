@@ -13,6 +13,7 @@ FROM eclipse-temurin:17-jre
 WORKDIR /app
 
 COPY --from=build /build/target/*.jar app.jar
+COPY firebase-applet-config.json ./firebase-applet-config.json
 
 EXPOSE 8081
 
